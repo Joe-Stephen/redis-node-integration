@@ -1,25 +1,24 @@
-const Redis=require('ioredis');
+const Redis = require("ioredis");
+const dotenv = require("dotenv").config();
 
 const redis = new Redis({
-    host: 'redis-10297.c14.us-east-1-3.ec2.cloud.redislabs.com',
-    port: 10297,
-    password:'qWotsd1x3MOXgrEZfoJheZAjZABfHb9u'
-  });
+  host: process.env.REDIS_HOSTNAME,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD,
+});
 
-  redis.set('myKey', 'myValue', (err, result) => {
-    if (err) {
-      console.error('Error setting value:', err);
-    } else {
-      console.log('Value set successfully:', result);
-    }
-  });
+redis.set("myKey", "myValue", (err, result) => {
+  if (err) {
+    console.error("Error setting value:", err);
+  } else {
+    console.log("Value set successfully:", result);
+  }
+});
 
-  redis.get('myKey', (err, result) => {
-    if (err) {
-      console.error('Error getting value:', err);
-    } else {
-      console.log('Retrieved value:', result);
-    }
-  });
-  
-  
+redis.get("myKey", (err, result) => {
+  if (err) {
+    console.error("Error getting value:", err);
+  } else {
+    console.log("Retrieved value:", result);
+  }
+});
