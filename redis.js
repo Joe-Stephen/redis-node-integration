@@ -7,6 +7,7 @@ const redis = new Redis({
   password: process.env.REDIS_PASSWORD,
 });
 
+//testing connection
 redis.set("myKey", "myValue", (err, result) => {
   if (err) {
     console.error("Error setting value:", err);
